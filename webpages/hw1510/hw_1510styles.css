@@ -52,6 +52,10 @@ input:focus {
     border-style: solid none none none;
 }
 
+.todo:last-child {
+    border-style: solid none;
+}
+
 h1 {
     font-family: 'Josephin Sans';
     font-weight: 700;
