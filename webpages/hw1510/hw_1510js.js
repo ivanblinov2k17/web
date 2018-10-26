@@ -2,7 +2,7 @@ const $input = document.querySelector('input')
 const $todos = document.querySelector('#todos-container')
 if (!localStorage.getItem('db'))
 {
-    localStorage.setItem('db',JSON.stringify(['test']))
+    localStorage.setItem('db',JSON.stringify([' ']))
 }
 const todos = JSON.parse(localStorage.getItem('db'))
 function makeTodo (text) {
@@ -16,9 +16,12 @@ function makeTodo (text) {
 
 function renderAll () {
     todos.forEach(function (text){
-        $todos.appendChild(
-            makeTodo(text)
-        )
+        if (text!=' ')
+        {
+            $todos.appendChild(
+                makeTodo(text)
+            )
+        }
     })
 }
 $input.addEventListener('keyup', function(event) {
