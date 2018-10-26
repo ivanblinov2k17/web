@@ -1,11 +1,10 @@
 const $input = document.querySelector('input')
 const $todos = document.querySelector('#todos-container')
-
-const todos = [
-    'Finish my hw',
-    'Do nothing'
-]
-
+if (!localStorage.getItem('db'))
+{
+    localStorage.setItem('db',JSON.stringify(['test']))
+}
+const todos = JSON.parse(localStorage.getItem('db'))
 function makeTodo (text) {
     const todo = document.createElement('div')
 
@@ -25,9 +24,9 @@ function renderAll () {
 $input.addEventListener('keyup', function(event) {
     if (event.code === 'Enter' && $input.value.trim()) {
         const text = $input.value
-
         todos.push(text)
-
+        localStorage.setItem('db',JSON.stringify(todos))
+        console.log(JSON.parse(localStorage.getItem('db')))
         $todos.appendChild(
             makeTodo(text)
         )

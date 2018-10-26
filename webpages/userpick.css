@@ -1,0 +1,35 @@
+.main{
+    width: 50%;
+    margin: 30px auto;
+    padding: 50px 30px 30px 30px;
+    background-color: rgb(108, 187, 209);
+    border-radius: 2px;
+    box-shadow: 5px 10px 200px rgba(0, 0, 0, 0.99);
+    font-family: 'Roboto';
+    font-weight: 300;
+}
+body {
+    background-image: url(background-blur-clean-531880.jpg); 
+    background-color: rgb(108, 187, 209);
+    background-size: 100%;
+}
+.headers{
+    font-size: 32px;
+    font-family: 'Josefin Sans';
+    color: rgb(82, 124, 151);
+}
+a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    margin: 0 20px;
+    font-size: 24px;
+    font-family: 'Fredoka One', cursive;
+    transition: .3s ease-in-out;
+    color: rgb(44, 28, 182);
+    border-bottom: 1px dashed;
+}
+a:hover {
+    border-bottom: 1px solid rgb(44, 28, 182);
+}

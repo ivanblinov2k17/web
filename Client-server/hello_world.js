@@ -1,4 +1,5 @@
 const figlet = require('figlet');
-figlet('Node.js - Net Server',function(err, data){
+figlet('Danila masenkov loh',function(err, data){
     banner = console.log(data);
   });
+  
