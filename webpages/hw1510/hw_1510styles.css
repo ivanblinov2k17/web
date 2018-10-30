@@ -50,6 +50,9 @@ input:focus {
     border-width: 1px;
     border-color: rgb(240, 240, 240);
     border-style: solid none none none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .todo:last-child {
@@ -64,4 +67,11 @@ h1 {
     text-align: center;
     text-shadow: 2px 2px 0px rgba(0, 0, 0, .15);
     margin-bottom: 50px;
+}
+
+.button_del {
+    background-image: url(button.png);
+    width: 30px;
+    height: 30px;
+    text-align: right;
 }
