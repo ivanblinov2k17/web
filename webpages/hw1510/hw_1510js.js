@@ -1,8 +1,10 @@
 const $input = document.querySelector('input')
 const $todos = document.querySelector('#todos-container')
+//localStorage.clear()
 if (!localStorage.getItem('db'))
 {
-    localStorage.setItem('db',JSON.stringify([' ']))
+    localStorage.setItem('db',JSON.stringify([['a0',' ']]))
+    localStorage.setItem('globalID',0)
 }
 const todos = JSON.parse(localStorage.getItem('db'))
 function makeTodo (text, id) {
@@ -11,31 +13,36 @@ function makeTodo (text, id) {
     todo.classList.add('todo')
     todo.textContent = text 
     todo.id = id
-    todo.appendChild(makeButton(text, id))
+    todo.appendChild(makeButton(id))
     return todo
 }
-function makeButton (text, id) {
+function makeButton ( id) {
     const button_del = document.createElement('input')
     button_del.type = 'button'
     button_del.classList.add('button_del')
     button_del.onclick = function(){
-        console.log('robit', id)
+        delTodo(id)
     }
-    button_del.id = id
-    console.log('ryjgrf')
     return button_del
 }
 function delTodo (id){
-    let elem = document.todos.children[id-1]
-    elem.remove()
-    console.log('robit', id)
+    let elem = document.querySelector(`#${id}`)
+    let temp = Infinity
+    for (i=1;i<todos.length;i++){
+        if (todos[i][0]==id){
+            temp = i
+        }
+    }
+    todos.splice(temp, 1)
+    localStorage.setItem('db',JSON.stringify(todos))
+    elem.parentNode.removeChild(elem)
 }
 function renderAll () {
     for (i=0;i<todos.length;i++){
-        if (todos[i]!=' ')
+        if (todos[i][1]!=' ')
         {
             $todos.appendChild(
-                makeTodo(todos[i], i),
+                makeTodo(todos[i][1], todos[i][0]),
             )
         }
     }
@@ -43,14 +50,13 @@ function renderAll () {
 $input.addEventListener('keyup', function(event) {
     if (event.code === 'Enter' && $input.value.trim()) {
         const text = $input.value
-        todos.push(text)
+        localStorage.setItem('globalID', 1 + Number( localStorage.getItem('globalID')))
+        todos.push(['a'+localStorage.getItem('globalID'),text])
         localStorage.setItem('db',JSON.stringify(todos))
-        console.log(JSON.parse(localStorage.getItem('db')))
         $todos.appendChild(
-            makeTodo(text, todos.length-1)
+            makeTodo(text, 'a'+localStorage.getItem('globalID'))
         )
         $input.value = ''
     }
 })
-
 renderAll()
