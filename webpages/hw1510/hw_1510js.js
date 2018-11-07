@@ -1,7 +1,7 @@
 const $input = document.querySelector('input')
 const $todos = document.querySelector('#todos-container')
 //localStorage.clear()
-if (!localStorage.getItem('db'))
+if (!localStorage.getItem('db')||localStorage.getItem('db')===`[["a0"," "]]`)
 {
     localStorage.setItem('db',JSON.stringify([['a0',' ']]))
     localStorage.setItem('globalID',0)

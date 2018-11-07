@@ -51,6 +51,8 @@ input:focus {
     border-color: rgb(240, 240, 240);
     border-style: solid none none none;
     display: flex;
+    word-wrap: break-word;
+    width:600px;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -74,7 +76,4 @@ h1 {
     width: 30px;
     height: 30px;
     text-align: right;
-}
-.todo:nth-child(3){
-    background-color: red;
 }
